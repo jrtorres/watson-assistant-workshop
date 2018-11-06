@@ -69,7 +69,6 @@ In the following steps, we have provided a sample restaurant chatbot that handle
   | Example                                       |
   | ----------------------------------------------|
   | Entity: type of cuisine/restaurant name       |
-  | Variations                                    |
 
   | Cuisine type     | Restaurant name    |
   |------------------|--------------------|
@@ -150,7 +149,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 ![date of reservation node](images/ss103.png)
 
-21. Select the **Cuisine** node again and click **Add child node**. Name the node **Invalid cuisine** and select the `anything_else` where it says  **if assistant recognizes**. Set the response text to `Please enter a valid cuisine type or restaurant name`
+21. Select the **Cuisine** node again and click **Add child node**. Name the node **Invalid cuisine** and select  `anything_else` where it says  **if assistant recognizes**. Set the response text to `Please enter a valid cuisine type or restaurant name`
 
 22. Scroll down to where it says **And finally** and select  **Jump to...** Select the **Date of reservation** node and then select **Wait for user input**. Note this loops  prevents  the user from continuing until they enter a valid cuisine or restaurant name.
 
@@ -161,12 +160,16 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 | Time of reservation | @sys-date     | What time would you like ? | $date = @sys-date | Wait for user input         |
 | Invalid date        | anything_else | Please enter a valid date  |                   | Jump to Time of Reservation |
 
+![date of reservation children](images/ss104.png)
+
 24. Add 2 child nodes to the node **Time of reservation** with the following settings:
 
 | Name                | Trigger       | Response                   | Context var       | And finally                 |
 | --------------------|---------------|----------------------------|-------------------|-----------------------------|
 | Size of party       | @sys-time     | How many in your party ?   | $time = @sys-time | Wait for user input         |
 | Invalid time        | anything_else | Please enter a valid time  |                   | Jump to Size of party       |
+
+![time of reservation children](images/ss105.png)
 
 25. Add 2 child nodes to the node **Size of party** with the following settings:
 
@@ -175,6 +178,11 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 | Confirm reservation | @sys-number   | Great! I've booked a table for `<? @sys-number ?>` people on `<? $date ?>` at `<? $time ?>` for `<? $cuisine ?>` | $number = @sys-number | Wait for user input         |
 | Invalid party size  | anything_else | Enter a valid party size   |       | Jump to Confirm reservation |
 
+![size of party children](images/ss106.png)
+
+26. Select the **Size of party node** Scroll down to where it says **And finally** and select  **Jump to...** Select the **Confirm reservation** node and then select **Wait for user input**.
+
+![size of party jump](images/ss107.png)
 
 ### Step 3: Test Watson Assistant Service
 
