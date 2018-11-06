@@ -14,7 +14,7 @@ A good question to ask yourself is, "Who is my user and what problem do they hav
 
 Training a chatbot is like training a human agent. You will train the chatbot with the knowledge of certain tasks (intents) and things that these tasks interact with (entities). These components are then combined to create a dialog tree that can take one or more paths to respond to the user's request.
 
-In the following steps, we have provided a sample restaurant chatbot that handles dinner reservations for one of the restaurants at an all-inclusive resort.
+In the following steps, we have provided a sample restaurant chatbot that handles dinner reservations for the restaurants at an all-inclusive resort.
 
 1. Envision the user that interacts with the bot.
 
@@ -68,15 +68,17 @@ In the following steps, we have provided a sample restaurant chatbot that handle
 
   | Example                                       |
   | ----------------------------------------------|
-  | Entity: type of cuisine                       |
+  | Entity: type of cuisine/restaurant name       |
   | Variations                                    |
-  | Cuisine type | Restaurant name                |
-  | 1. Mexican   | La Mesa Rosa                   |      
-  | 2. Chinese   | Hao Hao                        |
-  | 3. American  | Hemmingways                    |               
-  | 4. Italian   | Osteria                        |
-  | 5. French    | Le Cordon Bleu                 |
-  | Label: @cuisine                               |
+
+  | Cuisine type     | Restaurant name    |
+  |------------------|--------------------|
+  | 1. Mexican       | La Mesa Rosa       |      
+  | 2. Chinese       | Hao Hao            |
+  | 3. American      | Hemmingways        |               
+  | 4. Italian       | Osteria            |
+  | 5. French        | Le Cordon Bleu     |
+  | Label: @cuisine  |                    |
 
 
  We could add time and number entities, however, there are some built-in system entities provided by IBM, like numbers, dates, and times, that the DinnerBot will use.
