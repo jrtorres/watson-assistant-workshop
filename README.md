@@ -153,6 +153,8 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 22. Scroll down to where it says **And finally** and select  **Jump to...** Select the **Date of reservation** node and then select **Wait for user input**. Note this loops  prevents  the user from continuing until they enter a valid cuisine or restaurant name.
 
+![cuisine children](images/ss108.png)
+
 23. Add 2 child nodes to the node **Date of reservation** with the following settings:
 
 | Name                | Trigger       | Response                   | Context var       | And finally                 |
@@ -204,7 +206,7 @@ The Watson Assistant tooling offers a testing panel to test phrases to confirm t
 
 ![try it 4](images/ss21.png)  
 
-5. Test out your bot by giving it expected output until you get to the confirmation
+5. Test out your bot by giving it expected input until you get to the confirmation
 
 ![try it 4](images/ss22.png)  
 
