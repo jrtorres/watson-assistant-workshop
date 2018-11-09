@@ -1,10 +1,10 @@
 # Introduction to Watson Assistant
 
+## Lab 1 - Building a bot from scratch
+
 ## Overview
 
 Watson Assistant service combines machine learning, natural language understanding, and integrated dialog tools to create conversation flows between your apps and your users. In this lab, you will create a workspace and understand the terminology of creating a chatbot.
-
-## Part 1 Building a bot from scratch
 
 ### Step 1: Designing Your Bot
 
@@ -206,7 +206,7 @@ The Watson Assistant tooling offers a testing panel to test phrases to confirm t
 
 ![try it 4](images/ss21.png)  
 
-5. Test out your bot by giving it expected input until you get to the confirmation
+5. Test out your bot by giving it the expected input until you get to the confirmation message.
 
 ![try it 4](images/ss22.png)  
 
