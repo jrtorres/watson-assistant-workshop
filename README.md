@@ -104,7 +104,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 ![New workspace](images/ss3.png)
 
-6. Enter **DinnerBot**  as the  name for the chatbot and click **Create**
+6. Enter **DinnerBot**  as the  name for the skill and click **Create**
 
 7. You will be redirected into a page with three tabs, Intents, Entities, and Dialog. Under the Intents tab, click on **Add intent**  to create the first intent.
 
