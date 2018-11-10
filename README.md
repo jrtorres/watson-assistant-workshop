@@ -88,7 +88,7 @@ In the Dialog editor of Watson Assistant, we can now setup logic to step the use
 
 Now that we have designed the first dialogue between the chatbot and the user, we can train the Watson Assistant service. Sign up for an IBM Cloud account at bluemix.net. If you already have an account, sign into your account.
 
-1. **Click on the Catalog*** link in the top-right corner of the IBM Cloud dashboard.
+1. Click on ***Create resource***  at the top-right corner of the IBM Cloud dashboard.
 
 2. **Select the Watson Assistant** tile under the section titled Watson.
 
@@ -100,7 +100,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 ![Launch](images/ss2.png)
 
-5. This is the Watson Assistant tooling where you can create workspaces and setup different chatbots dialogues and applications. There is an example Cognitive Car Dashboard workspace where you can see a more evolved training. However, we'll create a new workspace for our bot to use. Click on **Workspaces** and then on  **Create**   in the box labeled **Create a new workspace**.
+5. This is the Watson Assistant tooling where you can create workspaces and setup different chatbots dialogues and applications. There is an example Customer Service workspace where you can see an example. However, we'll create a new workspace for our bot to use. Click on **Workspaces** and then on  **Create**   in the box labeled **Create a new workspace**.
 
 ![New workspace](images/ss3.png)
 
