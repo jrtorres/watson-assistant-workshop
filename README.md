@@ -90,7 +90,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 1. Click on ***Create resource***  at the top-right corner of the IBM Cloud dashboard.
 
-2. **Select the Watson Assistant** tile under the section titled Watson.
+2. Select the **Watson Assistant** tile under the section titled **AI**
 
 ![Assistant Service](images/ss1.png)
 
@@ -100,7 +100,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 ![Launch](images/ss2.png)
 
-5. This is the Watson Assistant tooling where you can create workspaces and setup different chatbots dialogues and applications. There is an example Customer Service workspace where you can see an example. However, we'll create a new workspace for our bot to use. Click on **Workspaces** and then on  **Create**   in the box labeled **Create a new workspace**.
+5. This is the Watson Assistant tooling where you can create skills with the training data and machine learning logic that enable your chat bot to understand and help customers.  Click on **Skills** and then on  **Create new**
 
 ![New workspace](images/ss3.png)
 
@@ -120,7 +120,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 11. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Click **Add entity**
 
-12. Name the entity *@cuisine* and add the following values and synonyms clicking **Add value** after entering each one
+12. Name the entity *@cuisine*, click **Create entity** and then add the following values and synonyms clicking **Add value** after entering each one
 
 ![values](images/ss100.png)
 
@@ -130,16 +130,19 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 ![sys entities](images/ss8.png)
 
-15. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The welcome condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Select the Welcome node and change the default response as shown below:
+15. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The welcome condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Select the **Welcome** node and change the default response to:
+
+`Hi. I'm DinnerBot. You can ask to reserve a table at any of our restaurants by cuisine type or restaurant name`
+
 ![new response](images/ss101.png)
 
-16. The second node checks for the condition anything_else. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases. For this exercise we'll stick with the defaults to save time.
+16. The second node checks for the condition **anything_else**. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases. For this exercise we'll stick with the defaults to save time.
 
 ![anything else](images/ss10.png)
 
 17. Select the **Welcome** node again and click **Add node**
 
-18. Name the node **Cuisine** and select the #book-reservation intent where it says **if assistant recognizes** and enter `What restaurant or what type of cuisine would you like ?` as the response
+18. Name the node **Cuisine** and select the **#book-reservation intent** where it says **if assistant recognizes** and enter `What restaurant or what type of cuisine would you like ?` as the response
 
 ![new node](images/ss102.png)
 
