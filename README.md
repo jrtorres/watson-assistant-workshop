@@ -34,9 +34,9 @@ In the following steps, we have provided a sample restaurant chatbot that handle
 
   | Example                                                          |
   | ---------------------------------------------------------------- |
-  | Bot: Hi, I'm DinnerBot. You can ask to reserve a table.          |
+  | Bot: Hi, I'm DinnerBot. You can ask me to reserve a table        |
   | Dave: I want to book a table. 	                                 |
-  | Bot: What restaurant or type of cuisine would you like?          |
+  | Bot: Sure, I can make a reservation for you. Which restaurant or what type of cuisine would you like ? |
   | Dave: I would like Mexican food                                  |
   | Bot: What day ?                                                  |
   | Dave: Friday please                                              |
@@ -132,7 +132,7 @@ Now that we have designed the first dialogue between the chatbot and the user, w
 
 15. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The welcome condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Select the **Welcome** node and change the default response to:
 
-`Hi. I'm DinnerBot. You can ask to reserve a table at any of our restaurants by cuisine type or restaurant name`
+`Hi. I'm DinnerBot. You can ask me to reserve a table for dinner.`
 
 ![new response](images/ss101.png)
 
