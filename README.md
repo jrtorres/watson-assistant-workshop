@@ -1,36 +1,18 @@
 # Introduction to Watson Assistant
 
-## Lab 1 - Building a bot from scratch
+This lab will walk you through building a conversational system using the Watson Assistant service. The lab is structured to build a basic "bot" with optional sections to extend the bots capabilities.
 
 ## Overview
 
-Watson Assistant service combines machine learning, natural language understanding, and integrated dialog tools to create conversation flows between your apps and your users. In this lab, you will create a workspace and understand the terminology of creating a chatbot.
+Watson Assistant service combines machine learning, natural language understanding, and integrated dialog tools to create conversation flows between your apps and your users.
 
-### Step 1: Designing Your Bot
+## Step 1: Designing Your Bot
 
-Building a chatbot with Watson Assistant is so easy, some developers choose to dive right into the tooling. However, with a well-thought out, well-planned chatbot, the interaction with the user can lead to a much better experience that can handle edge cases. In this section, we will design the interaction between a user, Dave, and a chatbot named DinnerBot that handles reservations  for guests at an all inclusive resort that has several restaurants.
+In this section, we will design the interaction between a user and a chatbot named DinnerBot that handles dinner reservations for guests at an all inclusive resort that has several restaurants.
 
-A good question to ask yourself is, "Who is my user and what problem do they have?" Expand on the user's profile by determining what the user needs from this chatbot. Does the user have a need to book a reservation at a restaurant? Or an answer to a common question like "Where's the bathroom?" at a conference. Maybe a chatbot that handles tasks like turning on lights or other equipment. It might help to think of the chatbot as an automated version of an existing agent, such as a customer service agent. Look at existing processes that include repeated manual processes, which can sometimes be augmented with chatbots.
+It might help to think of the chatbot as an automated version of an existing agent, such as a customer service agent. Training a chatbot is like training a human agent. You will train the chatbot with the knowledge of certain tasks (intents) and things that these tasks interact with (entities). These components are then combined to create a dialog tree that can take one or more paths to respond to the user's request.
 
-Training a chatbot is like training a human agent. You will train the chatbot with the knowledge of certain tasks (intents) and things that these tasks interact with (entities). These components are then combined to create a dialog tree that can take one or more paths to respond to the user's request.
-
-In the following steps, we have provided a sample restaurant chatbot that handles dinner reservations for the restaurants at an all-inclusive resort.
-
-1. Envision the user that interacts with the bot.
-
-  | Example                                                 |
-  | ------------------------------------------------------- |
-  | A user needs to book a table at one of the restaurants  |
-
-2. Now, let's describe the overall function of the chatbot.
-
-  | Example                                                                     |
-  | --------------------------------------------------------------------------- |
-  | The chatbot helps users book reservations at one of the resorts restaurants |
-
-
-
-3. It can be helpful to take a snapshot of an existing dialogue and then break it down into intents and entities. One thing we noticed is that some people identify the restaurant by cuisine type, not by name so the bot needs to handle that. A sample conversation is shown below. Keep the conversation simple…you can always add more complex logic later.
++ It can be helpful to take a snapshot of an existing dialogue and then break it down into intents and entities.For example, one thing we noticed is that some people identify the restaurant by cuisine type, not by name so the bot needs to handle that.
 
   | Example                                                          |
   | ---------------------------------------------------------------- |
@@ -46,9 +28,7 @@ In the following steps, we have provided a sample restaurant chatbot that handle
   | Dave: 5                                                          |
   | Bot: Excellent ! Here are the details of your booking            |
 
-
-
-4. Let's start with the action the user wants to do, which is referred to as an intent. First  we write a human-friendly description of the action the user is wanting to perform. Then we list at least five ways the user might phrase this action. Lastly, add a label, like a variable name in code (alpha-numeric, underscores, etc.), that can be used later as a reference.
++ In order to understand the action a user is wanting the bot to perform. We will look for the variations in which the user may "ask" for this action.
 
   | Example                                                          |
   | ---------------------------------------------------------------- |
@@ -61,10 +41,7 @@ In the following steps, we have provided a sample restaurant chatbot that handle
   | 5. Schedule a reservation                                        |
   | Label: #book_reservation                                         |
 
-
-  If you find that you don't have many variations, invite a colleague, a friend (or a real user!) to suggest how they would ask "to book a reservation." In the real world, you could use customer interactions as a base of inspiration.
-
-5. Another component to training a chatbot is recognizing objects, which are referred to as entities. This example reservation system can differentiate different types of cuisine and/or restaurant names. We add a type of cuisine to booking a reservation.
++ To fulfill the users request, we may need to recognize the important objects in the request (referred to as entities). This example reservation system can differentiate different types of cuisine and/or restaurant names.
 
   | Example                                       |
   | ----------------------------------------------|
@@ -72,152 +49,178 @@ In the following steps, we have provided a sample restaurant chatbot that handle
 
   | Cuisine type     | Restaurant name    |
   |------------------|--------------------|
-  | 1. Mexican       | La Mesa Rosa       |      
+  | 1. Mexican       | La Mesa Rosa       |
   | 2. Chinese       | Hao Hao            |
-  | 3. American      | Hemmingways        |               
+  | 3. American      | Hemmingways        |
   | 4. Italian       | Osteria            |
   | 5. French        | Le Cordon Bleu     |
   | Label: @cuisine  |                    |
 
-
- We could add time and number entities, however, there are some built-in system entities provided by IBM, like numbers, dates, and times, that the DinnerBot will use.
-
 In the Dialog editor of Watson Assistant, we can now setup logic to step the user through the conversation. In the next section, we will use this design to train the Watson Assistant service.
 
-### Step 2: Train Watson Assistant Service
+## Step 2: Build Your Bot Using Watson Assistant Service
 
-Now that we have designed the first dialogue between the chatbot and the user, we can train the Watson Assistant service. Sign up for an IBM Cloud account at bluemix.net. If you already have an account, sign into your account.
+Now that we have designed the first dialogue between the chatbot and the user, we can train the Watson Assistant service.
 
-1. Click on ***Create resource***  at the top-right corner of the IBM Cloud dashboard.
+1. Go to the IBM Cloud Console - (https://cloud.ibm.com) and log in.
 
-2. Select the **Watson Assistant** tile under the section titled **AI**
+1. Click on the **`Create resource`** button at the top-right corner of the IBM Cloud dashboard.
 
-![Assistant Service](images/ss1.png)
+1. Click on the **AI** category on the left panel and then Select the **Watson Assistant** tile
 
-3. Click **Create**
+    ![Assistant Service](images/ss1.png)
 
-4. Click on the  **Launch tool** button to launch into the Watson Assistant tooling.
+1. Click the **`Create`** button (*Leave default options for Lite plan, region service name, etc*).
 
-![Launch](images/ss2.png)
+1. Click on the  **`Launch tool`** button to launch into the Watson Assistant tooling.
 
-5. This is the Watson Assistant tooling where you can create skills with the training data and machine learning logic that enable your chat bot to understand and help customers.  Click on **Skills** and then on  **Create new**
+    ![Launch](images/ss2.png)
 
-![New workspace](images/ss3.png)
+1. This is the Watson Assistant tooling where you can create skills with the training data and machine learning logic that enable your chat bot to understand and help customers.  Click on **`Skills`** and then on  **`Create Skill`** button
 
-6. Enter **DinnerBot**  as the  name for the skill and click **Create**
+    ![New workspace](images/ss3.png)
 
-7. You will be redirected into a page with three tabs, Intents, Entities, and Dialog. Under the Intents tab, click on **Add intent**  to create the first intent.
+1. Enter **DinnerBot** as the  name for the skill and click the **`Create dialog skill`** button
 
-8. Name the intent *#book_reservation* and click **Create intent**
+1. You will be redirected into a page with several tabs (Intents, Entities, Dialog, etc). Under the Intents tab, click on the **`Create intent`** button to create the first intent.
 
-9. Add the following examples clicking on **Add example** after entering each one
+1. Name the intent ***book_reservation*** and click the **`Create intent`** button
 
-![examples](images/ss5.png)
+1. Add the following example utterances in the **Add user example** section, clicking on **Add example** after entering each one
 
-10. Click on the return icon to go back to the main menu screen
+    ```
+    book a reservation
+    book a table
+    make a reservation
+    reserve a table
+    schedule a reservation
+    secure a reservation
+    ```
 
-![return](images/ss6.png)
+    ![examples](images/ss5.png)
 
-11. Click on the **Entities** tab in the top menu bar. This is where you can add entities. Click **Add entity**
+1. Click the return arrow icon next to the intent name (*#book_reservation*)
 
-12. Name the entity *@cuisine*, click **Create entity** and then add the following values and synonyms clicking **Add value** after entering each one
+    ![return](images/ss6.png)
 
-![values](images/ss100.png)
+1. Click on the **Entities** tab in the top menu bar. This is where you can add entities, in our use case we want to capture where the reservation will be made. Click the **`Create entity`** button
 
-13. Click in the return icon to go back to the main menu screen
+1. Name the entity ***cuisine*** and click the **`Create entity`** button. Then add the following values and synonyms (the restaurant name) clicking **Add value** after entering each one
 
-14. The Watson Assistant has a handful of common entities created by IBM that can be used across any use case. These entities include: date, time, currency, percentage, and numbers. Click on **System entities** and enable @sys-date, @sys-number and @sys_time
+    ```
+    american
+    chinese
+    italian
+    mediterranean
+    mexican
+    ```
 
-![sys entities](images/ss8.png)
+    ![values](images/ss100.png)
 
-15. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The welcome condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Select the **Welcome** node and change the default response to:
+1. [Optional] Feel free to experiment with the entity recommendation feature. This feature will suggest other synonyms similar to the ones in your given entity list. For example, if you bring up the recommendations for the entity value *italian* (by clicking the icon next to the entity vaue) when there are no other synonyms, you will see one list of recommendations. If you add the synonyms: pasta and pizza to the list and then bring up the recommendations again, you will see a different list.
 
-`Hi. I'm DinnerBot. You can ask me to reserve a table for dinner.`
+    ![entity_recs_1](images/ss30.png)
 
-![new response](images/ss101.png)
+    ![entity_recs_2](images/ss31.png)
 
-16. The second node checks for the condition **anything_else**. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases. For this exercise we'll stick with the defaults to save time.
+1. Click the return arrow icon next to the entity name (*@cuisine*)
 
-![anything else](images/ss10.png)
+1. We will create one more user defined entity to capture the phone number for the reservation. Click the **`Create entity`** button
 
-17. Select the **Welcome** node again and click **Add node**
+1. Name the entity ***contact_number*** and click the **`Create entity`** button. Then give the value name 'phone', switch the type from 'Synonyms' to 'Pattern' in the drop down list add finally use the pattern: **(\d{3})-(\d{3})-(\d{4})**. Then click the **Add value** button.
 
-18. Name the node **Cuisine** and select the **#book-reservation intent** where it says **if assistant recognizes** and enter `What restaurant or what type of cuisine would you like ?` as the response
+    ![entity_val_2](images/ss32.png)
 
-![new node](images/ss102.png)
+1. Click the return arrow icon next to the entity name (*@contact_number*)
 
-19. Select the **Cuisine** node again and click **Add child node**. Name the node **Date of reservation** and select the `@cuisine` entity where it says  **if assistant recognizes**.
+1. Watson Assistant has a handful of common entities created by IBM that can be used across any use case. These entities include: date, time, currency, percentage, and numbers. For our use case, we want to capture the date and time of the reservation as well as the number of people in the party. Click on **System entities** and enable **@sys-date**, **@sys-number** and **@sys_time**
 
-20. Click on the 3 dots to the right of where is says **Then respond with:** and select **Open context editor**. Set a content variable **$cuisine** to the value of the entity `@cuisine` and change the response text to `What day would you like to reserve ?`
+    ![sys entities](images/ss8.png)
 
-![date of reservation node](images/ss103.png)
+1. Click on the **Dialog** tab in the top menu bar. Click **Create**. There are two nodes added by default. The welcome condition is triggered when the chatbot is initially started. This is a good place to introduce the bot and suggest actions the user can ask of this chatbot. Select the **Welcome** node and change the default response to:
 
-21. Select the **Cuisine** node again and click **Add child node**. Name the node **Invalid cuisine** and select  `anything_else` where it says  **if assistant recognizes**. Set the response text to `Please enter a valid cuisine type or restaurant name`
+    `Hi. I'm DinnerBot. You can ask me to reserve a table for dinner.`
 
-22. Scroll down to where it says **And finally** and select  **Jump to...** Select the **Date of reservation** node and then select **Wait for user input**. Note this loops  prevents  the user from continuing until they enter a valid cuisine or restaurant name.
+    ![new response](images/ss101.png)
 
-![cuisine children](images/ss108.png)
+1. The second node checks for the condition **anything_else**. In the event the user enters something that wasn't expected, the service will return this response. Ideally, it should convey a way for the user to recover, such as example phrases. For this exercise we'll stick with the defaults to save time.
 
-23. Add 2 child nodes to the node **Date of reservation** with the following settings:
+    ![anything else](images/ss10.png)
 
-| Name                | Trigger       | Response                   | Context var       | And finally                 |
-| --------------------|---------------|----------------------------|-------------------|-----------------------------|
-| Time of reservation | @sys-date     | What time would you like ? | $date = @sys-date | Wait for user input         |
-| Invalid date        | anything_else | Please enter a valid date  |                   | Jump to Time of Reservation |
+1. To handle the actual reservation request, we will be using a feature called *Slots*. The slots feature allows you to collect multiple pieces of information in a single Dialog node allowing users to provide  some or all of the required information when interacting with your bot. For example if a user enters `Book a table` they will be prompted  in sequence for all  the information needed. However if a user enters `Book a table for Chinese food next Friday at 8pm` the bot will only ask for the number of people dining before confirming the reservation.
 
-![date of reservation children](images/ss104.png)
+1. Select the **Welcome** node again and click **Add node**
 
-24. Add 2 child nodes to the node **Time of reservation** with the following settings:
+1. Name the node ***Book Reservation*** and select the *#book_reservation intent* where it says **if assistant recognizes**
 
-| Name                | Trigger       | Response                   | Context var       | And finally                 |
-| --------------------|---------------|----------------------------|-------------------|-----------------------------|
-| Size of party       | @sys-time     | How many in your party ?   | $time = @sys-time | Wait for user input         |
-| Invalid time        | anything_else | Please enter a valid time  |                   | Jump to Size of party       |
+1. Click on **Customize** in the top right corner. Select **Enable Slots** and **Prompt for everything**. Click **Apply**
 
-![time of reservation children](images/ss105.png)
+    ![enable slots](images/ss11.5.png?raw=true)
 
-25. Add 2 child nodes to the node **Size of party** with the following settings:
+1. Add the first slot by entering `@cuisine`,  in the column labeled **Check for**, `$cuisine` in the **Save it as** column and the  prompt `Which restaurant or what type of cuisine would you like?` in the **If not present, ask** column
 
-| Name                | Trigger       | Response                   | Context var       | And finally                 |
-| --------------------|---------------|----------------------------|-----------------  | ----------------------------|
-| Confirm reservation | @sys-number   | Great! I've booked a table for `<? @sys-number ?>` people on `<? $date ?>` at `<? $time ?>` for `<? $cuisine ?>` | $number = @sys-number | Wait for user input         |
-| Invalid party size  | anything_else | Enter a valid party size   |       | Jump to Confirm reservation |
+    ![cuisine](images/ss12.png)
 
-![size of party children](images/ss106.png)
+1. Enter `Sure I can help make a reservation. What type of cuisine or which restaurant did you want?` in the field with label **If no slots are pre-filled, ask this first**
 
-26. Select the **Size of party node** Scroll down to where it says **And finally** and select  **Jump to...** Select the **Confirm reservation** node and then select **Wait for user input**.
+    ![cuisine prompt](images/ss14.png)
 
-![size of party jump](images/ss107.png)
+1. Click on the gear icon next to the added slot to add the error handling that was implemented in the original version. Scroll down to the field with label **Not found** and enter `Please enter a valid  cuisine type or restaurant name`
+Click **Save**
 
-### Step 3: Test Watson Assistant Service
+    ![cuisine error](images/ss15.png)
+
+1. Add the following slots one by one by clicking on  **Add slot** prior to adding each one. Remember that you'll need to click on the gear icon next to a slot to add in the  message in the **Not Found** field for that slot.
+
+    | Check for        | Save it as   | If not present ask                    | Not found                       |
+    |------------------|--------------|---------------------------------------|---------------------------------|
+    | @sys-date        | $date        | What day would you like to reserve ?  | Please enter a valid date       |
+    | @sys-time        | $time        | What time would you like to reserve ? | Please enter a valid time       |
+    | @sys-number      | $number      | How many people will be dining?      | Please enter a valid party size  |
+    | @contact_number  | $contact_number      | What is your contact number?      | Please enter a valid phone number  |
+
+    ![remaining slots](images/ss16.png)
+
+1. Add `Great! I've booked a table for <? $number ?> people on <? $date ?> at <? $time ?> for <? $cuisine ?>` to field with label **Then respond with:**
+
+    ![time](images/ss17.png)
+
+## Step 3: Test Watson Assistant Service
 
 The Watson Assistant tooling offers a testing panel to test phrases to confirm the correct intents, entities, and dialog are matched and returned.
 
 1. To test the bot, click on the **Try it** icon in the top-right corner of the tooling.
 
-![try it 1](images/ss18.png)
+    ![try it 1](images/ss18.png)
 
-2. A side panel appears and shows the contents of the node that matches welcome. Enter a message that triggers the #book_reservation intent. We can ask *book a table*
+1. A side panel appears and shows the contents of the node that matches welcome. Enter a message that triggers the #book_reservation intent. We can ask *book a table*
 
-![try it 2](images/ss19.png)
+    ![try it 2](images/ss19.png)
 
-3. Notice that the intent #book_reservation was recognized. The #book_reservation node was triggered and the output includes the response from the Book Reservation node. The user is prompted for a choice of cuisine.
+1. Notice that the intent #book_reservation was recognized. The #book_reservation node was triggered and the output includes the response from slots in the node.
 
-![try it 3](images/ss20.png)  
+    ![try it 3](images/ss20.png)  
 
-4. When the user enters a cuisine or restaurant name, the @cuisine entity is recognized.
+1. Follow the rest of the prompts to complete the reservation request.
 
-![try it 4](images/ss21.png)  
+1. Click on the **Clear** link to start over with the test tool.  Type `Book a table at the italian place for 4 on friday at 8pm` when prompted.
 
-5. Test out your bot by giving it the expected input until you get to the confirmation message.
+1. Verify that you get a confirmation message without being prompted for any input (if you have the contact number as optional).
 
-![try it 4](images/ss22.png)  
+## Step 4: Extend the bot
 
-6. Click on the **Clear** link to start over with the test tool. Try entering invalid input at various stages to see if the bot responds as expected.
+There is so much functionality in Watson Assistant that it is hard to cover it all in one lab. Feel free to go through the Watson Assistant documentation to understand other features and extend this bot. A couple of example extension you could complete are:
 
-7. Take a bow ! You've written a working chatbot from scratch !
++ [Add digressions and handlers to this bot](DigressionAndHandlersExtension.md).
++ [Add Cloud Functions to make an external service call](CloudFunctionsExtension.md).
 
+# Summary
 
-## Summary
+The Watson Assistant service was able to handle gathering multiple pieces of information, parsing the user input, and placing the values into a context that was used to inject into the response back to the user.  
 
-The Watson Assistant service was able to handle gathering multiple pieces of information, parsing the user input, and placing the values into a context that was used to inject into the response back to the user. In a future lab you'll see how chatbots like this that always ask a fixed set of questions are much  easier  to write when the Slots feature is used.
+**Take a bow ! You've written a working chatbot from scratch !**
+
+# Links
+
+* [IBM Watson Assistant Docs](https://console.bluemix.net/docs/services/conversation/dialog-build.html#dialog-build)
+* [Blog for IBM Watson Assistant Slots Code Pattern](https://developer.ibm.com/code/2017/09/19/managing-resources-efficiently-watson-conversation-slots/)
